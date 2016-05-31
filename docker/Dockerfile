@@ -2,7 +2,7 @@ FROM centos:centos6.6
 
 MAINTAINER Guillaume Ehret <guillaume@dev-mind.com>
 
-RUN yum install -y curl
+RUN yum install -y curl tar
 
 ENV JDK_VERSION 8u60
 ENV JDK_BUILD_VERSION b27
@@ -21,14 +21,15 @@ RUN yum install -y Xvfb
 RUN yum install -y libXfont Xorg
 RUN yum install -y which
 
-# Install Node.js
-RUN curl --silent --location https://rpm.nodesource.com/setup | bash -
-RUN yum install -y nodejs
-
-RUN npm install -g gulp
-
 RUN mkdir -p /data
 WORKDIR /data
+
+# Enable Extra Packages for Enterprise Linux (EPEL) for CentOS
+RUN yum install -y epel-release
+
+# Install Node.js and npm
+RUN yum install -y nodejs npm
+RUN npm install -g gulp
 
 RUN git clone https://github.com/Dev-Mind/devmind-xvfb
 WORKDIR /data/devmind-xvfb

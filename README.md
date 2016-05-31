@@ -20,6 +20,16 @@ Je vous conseille de procéder de cette manière
 
 
 Regardons ce qu'il se passe si nous lançons les tests Karma via
+   ```./node_modules/karma/bin/karma start```
+
+Comme Firefox ne peut pas se lancer nous devons avoir
+```
+   31 05 2016 23:05:15.916:INFO [karma]: Karma v0.13.22 server started at http://localhost:9876/
+   31 05 2016 23:05:15.924:INFO [launcher]: Starting browser Firefox
+   31 05 2016 23:05:16.027:ERROR [launcher]: Cannot start Firefox
+```
+
+Suivez ensuite ce qui est écrit dans l'article pour configurer convenablement [Xvfb](https://www.x.org/archive/X11R7.6/doc/man/man1/Xvfb.1.xhtml).
 
 # Versions des librairies utilisées
 
