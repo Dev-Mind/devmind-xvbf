@@ -16,7 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       {pattern: 'node_modules/angular/angular.js', watched: false},
-      {pattern: 'node_modules/angular-ui-router/build/angular-ui-router.js', watched: false},
+      {pattern: 'node_modules/angular-ui-router/release/angular-ui-router.js', watched: false},
       {pattern: 'node_modules/material-design-lite/material.js', watched: false},
       {pattern: 'node_modules/jquery/dist/jquery.js', watched: false},
 
