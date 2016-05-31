@@ -7,8 +7,7 @@ var gulpSequence = require('gulp-sequence');
 var paths = {
   build: {
     all: 'build',
-    dev: 'build/dev',
-    e2e: 'build/e2e'
+    dev: 'build/dev'
   },
   js: {
     app: [
@@ -23,7 +22,7 @@ var paths = {
     unit: [
       'src/test/unit/**/*.spec.js'
     ],
-    e2e: [
+    mock: [
       'node_modules/angular-mocks/angular-mocks.js',
       'src/test/e2e/e2eConfig.js'
     ]
@@ -70,8 +69,7 @@ var config = {
   timestamp: Date.now()
 };
 
-require('./gulp/build-dev.js')(gulp, config);
-require('./gulp/build-e2e.js')(gulp, config);
+require('./gulp/build.js')(gulp, config);
 require('./gulp/serve.js')(gulp, config);
 require('./gulp/unit.js')(gulp, config);
 require('./gulp/e2e.js')(gulp, config);
@@ -81,11 +79,11 @@ gulp.task('default', function () {
 });
 
 gulp.task('build', function (callback) {
-  gulpSequence('clean', 'build:dev', callback);
+  gulpSequence('clean', '_build', callback);
 });
 
 gulp.task('serve', function (callback) {
-  gulpSequence('clean', 'serve:dev', callback);
+  gulpSequence('clean', '_serve', callback);
 });
 
 gulp.task('clean', function (done) {
@@ -97,7 +95,7 @@ gulp.task('unit', function (done) {
 });
 
 gulp.task('e2e', function (callback) {
-  gulpSequence('clean', 'serve:e2e', '_e2e', callback);
+  gulpSequence('clean', '_serve', '_e2e', callback);
 });
 
 module.exports = {

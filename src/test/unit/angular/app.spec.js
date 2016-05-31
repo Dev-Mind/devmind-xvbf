@@ -34,7 +34,7 @@
     });
 
     it('should navigate to talk list page when url=[/talk]', function () {
-      $httpBackend.expectGET('views/angular/talk.html').respond(200);
+      $httpBackend.expectGET('views/talk.html').respond(200);
       // when we go to the editor
       $location.url('talk');
       $rootScope.$apply();

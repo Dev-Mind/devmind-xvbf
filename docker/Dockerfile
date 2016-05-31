@@ -25,12 +25,6 @@ RUN yum install -y which
 RUN curl --silent --location https://rpm.nodesource.com/setup | bash -
 RUN yum install -y nodejs
 
-# Install dependencies for Phantom
-RUN yum install -y gcc gcc-c++ make flex bison gperf ruby
-RUN yum install -y openssl-devel freetype-devel fontconfig-devel libicu-devel sqlite-devel
-RUN yum install -y libpng-devel libjpeg-devel
-
-RUN npm install -g grunt-cli
 RUN npm install -g gulp
 
 RUN mkdir -p /data

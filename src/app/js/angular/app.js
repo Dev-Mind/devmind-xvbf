@@ -28,7 +28,7 @@ angular.module('jt').config(function ($stateProvider, $urlRouterProvider, $locat
     })
     .state('talk', {
       url: "/talk",
-      templateUrl: "views/angular/talk.html",
+      templateUrl: "views/talk.html",
       controller: 'TalkCtrl',
       controllerAs: 'ctrl'
     });

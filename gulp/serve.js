@@ -4,8 +4,7 @@ var serveStatic = require('serve-static');
 
 module.exports = function (gulp, config) {
 
-  require('./build-dev.js')(gulp, config);
-  require('./build-e2e.js')(gulp, config);
+  require('./build.js')(gulp, config);
 
   var paths = config.paths;
 
@@ -39,22 +38,18 @@ module.exports = function (gulp, config) {
   }
 
   gulp.task('watch', function() {
-    gulp.watch(paths.js.app, ['build:dev:js']);
-    gulp.watch([paths.templates], ['build:dev:js']);
-    gulp.watch([paths.html], ['build:dev:html']);
-    gulp.watch(paths.less.path, ['build:dev:css']);
+    gulp.watch(paths.js.app, ['build:js']);
+    gulp.watch([paths.templates], ['build:js']);
+    gulp.watch([paths.html], ['build:html']);
+    gulp.watch(paths.less.path, ['build:css']);
   });
 
   /**
    * This task is not working with the WebSocket connection, but SockJS falls back on long-polling
    * so the live reload in preview still work
    */
-  gulp.task('serve:dev', ['build:dev', 'watch'], function () {
+  gulp.task('_serve', ['_build', '_watch'], function () {
     browserSyncInit(paths.build.dev, 4000);
-  });
-
-  gulp.task('serve:e2e', ['build:e2e'], function () {
-    browserSyncInit(paths.build.e2e, 4001);
   });
 
 };

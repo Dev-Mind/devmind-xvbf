@@ -4,7 +4,7 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'firefox'
+    'browserName': 'chrome'
   },
 
   // Framework to use. Jasmine is recommended.
@@ -14,7 +14,7 @@ exports.config = {
   // protractor is called.
   specs: ['src/test/e2e/**/*.spec.js'],
 
-  baseUrl: 'http://localhost:4001',
+  baseUrl: 'http://localhost:4000',
 
   onPrepare: function () {
     browser.driver.manage().window().maximize();
