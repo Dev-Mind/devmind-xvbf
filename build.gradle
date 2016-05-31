@@ -1,0 +1,39 @@
+/*******************************************************************************************
+ *                              gradle file : ROOT
+ ******************************************************************************************/
+
+buildscript {
+    ext {
+        vNodePlugin = '0.10'
+    }
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    dependencies {
+        classpath "com.moowork.gradle:gradle-gulp-plugin:${vNodePlugin}"
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'com.moowork.node'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
+}
+
+node {
+    version = '0.12.7'
+    download = true
+}
+
+task npmBuild(dependsOn: npmInstall, type: NpmTask) {
+    inputs.dir "src"
+    inputs.file "gulpfile.js"
+    outputs.dir "build"
+    args = ['run', 'build']
+}
+

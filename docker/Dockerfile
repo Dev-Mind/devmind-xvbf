@@ -14,14 +14,21 @@ RUN \
 
 ENV JAVA_HOME /usr/java/default
 
+
 RUN yum install -y git
 RUN yum install -y firefox
 RUN yum install -y Xvfb
 RUN yum install -y libXfont Xorg
+RUN yum install -y which
 
 # Install Node.js
 RUN curl --silent --location https://rpm.nodesource.com/setup | bash -
 RUN yum install -y nodejs
+
+# Install dependencies for Phantom
+RUN yum install -y gcc gcc-c++ make flex bison gperf ruby
+RUN yum install -y openssl-devel freetype-devel fontconfig-devel libicu-devel sqlite-devel
+RUN yum install -y libpng-devel libjpeg-devel
 
 RUN npm install -g grunt-cli
 RUN npm install -g gulp
@@ -31,7 +38,5 @@ WORKDIR /data
 
 RUN git clone https://github.com/Dev-Mind/devmind-xvfb
 WORKDIR /data/devmind-xvfb
-
-RUN npm install
 
 CMD ["/bin/bash"]
