@@ -30,6 +30,16 @@ RUN yum install -y epel-release
 # Install Node.js and npm
 RUN yum install -y nodejs npm
 RUN npm install -g gulp
+RUN npm install -g n
+RUN n 4.4.5
+RUN npm update -g npm
+RUN rm -f /usr/local/bin/node
+RUN rm -f /usr/bin/node
+RUN rm -f /usr/local/bin/npm
+RUN rm -f /usr/bin/npm
+RUN ln -s /usr/local/n/versions/node/4.4.5/bin/node /usr/bin/node
+RUN ln -s /usr/local/n/versions/node/4.4.5/lib/node_modules/npm/cli.js /usr/bin/npm
+
 
 RUN git clone https://github.com/Dev-Mind/devmind-xvfb
 WORKDIR /data/devmind-xvfb
