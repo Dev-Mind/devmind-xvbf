@@ -40,6 +40,5 @@ Les versions des librairies utiliséees sont les suivantes
  * [Protractor 3.0.0](https://angular.github.io/protractor)
  * [Jasmine 2.4.1](http://jasmine.github.io/)
  * [Angular 1.4.8](https://angularjs.org/)
- * [Jquery 2.2.0](https://jquery.com/)
 
 
